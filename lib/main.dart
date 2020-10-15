@@ -1,4 +1,5 @@
 import 'package:devseek/views/homeView.dart';
+import 'package:devseek/views/installView.dart';
 import 'package:flutter/material.dart';
 
 void main() {
