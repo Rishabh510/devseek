@@ -33,43 +33,23 @@ class _TabDeciderViewState extends State<TabDeciderView> {
           });
         },
         items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.black,
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-              color: Colors.black,
-            ),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add_circle_outline,
-              color: Colors.black,
-            ),
-            label: 'New',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.favorite,
-              color: Colors.black,
-            ),
-            label: 'Notif',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_circle,
-              color: Colors.black,
-            ),
-            label: 'Profile',
-          ),
+          buildBottomNavigationBarItem(Icons.home, 'Home'),
+          buildBottomNavigationBarItem(Icons.search, 'Search'),
+          buildBottomNavigationBarItem(Icons.add_circle_outline, 'New'),
+          buildBottomNavigationBarItem(Icons.favorite, 'Notif'),
+          buildBottomNavigationBarItem(Icons.account_circle, 'Profile'),
         ],
       ),
+    );
+  }
+
+  BottomNavigationBarItem buildBottomNavigationBarItem(IconData icon, String label) {
+    return BottomNavigationBarItem(
+      icon: Icon(
+        icon,
+        color: Colors.black,
+      ),
+      label: label,
     );
   }
 }
