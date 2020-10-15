@@ -1,5 +1,6 @@
 import 'package:devseek/views/homeView.dart';
 import 'package:devseek/views/installView.dart';
+import 'package:devseek/views/tabDeciderView.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeView(),
+      home: TabDeciderView(),
     );
   }
 }
