@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -10,7 +12,7 @@ class HomeView extends StatelessWidget {
         centerTitle: true,
         title: Text(
           'DevSeek',
-          style: TextStyle(color: Colors.blue, fontSize: 24),
+          style: TextStyle(color: blue, fontSize: 24),
         ),
       ),
       body: SingleChildScrollView(

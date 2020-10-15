@@ -3,6 +3,8 @@ import 'package:devseek/views/installView.dart';
 import 'package:devseek/views/tabDeciderView.dart';
 import 'package:flutter/material.dart';
 
+import 'constants.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'DevSeek',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: TabDeciderView(),

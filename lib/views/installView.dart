@@ -1,3 +1,4 @@
+import 'package:devseek/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class InstallView extends StatelessWidget {
             Column(
               children: [
                 Container(
-                  child: Image.asset('images/logo.png'),
+                  child: Image.asset(logoPath),
                 ),
                 Text(
                   'For the developers who seek',
@@ -24,7 +25,7 @@ class InstallView extends StatelessWidget {
               ],
             ),
             RaisedButton(
-              color: Colors.blue.withOpacity(0.5),
+              color: blue.withOpacity(0.5),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
               padding: EdgeInsets.symmetric(horizontal: 64, vertical: 16),
               onPressed: () {},
