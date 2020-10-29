@@ -9,6 +9,19 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  bool grid = true;
+  List<Widget> posts = [
+    Container(
+      color: Colors.yellow,
+    ),
+    Container(
+      color: Colors.red,
+    ),
+    Container(
+      color: Colors.green,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,8 +126,70 @@ class _ProfileViewState extends State<ProfileView> {
                 ),
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.grid_on, color: (grid) ? blue : Colors.grey),
+                  onPressed: () {
+                    setState(() {
+                      grid = true;
+                    });
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.list, color: (grid) ? Colors.grey : blue),
+                  onPressed: () {
+                    setState(() {
+                      grid = false;
+                    });
+                  },
+                ),
+              ],
+            ),
+            Divider(color: Colors.black, thickness: 0.5),
+            (grid) ? createGridView() : createListView(),
           ],
         ),
+      ),
+    );
+  }
+
+  createGridView() {
+    return Container(
+      child: GridView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: posts.length,
+        itemBuilder: (context, i) {
+          return Container(
+            child: posts[i],
+          );
+        },
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          childAspectRatio: 1,
+          crossAxisSpacing: 4,
+          mainAxisSpacing: 4,
+        ),
+      ),
+    );
+  }
+
+  createListView() {
+    return Container(
+      child: ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: posts.length,
+        itemBuilder: (context, i) {
+          return Container(
+            padding: EdgeInsets.all(4),
+            width: double.infinity,
+            height: 250,
+            child: posts[i],
+          );
+        },
       ),
     );
   }
