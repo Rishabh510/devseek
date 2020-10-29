@@ -1,3 +1,4 @@
+import 'package:devseek/views/editProfileView.dart';
 import 'package:devseek/views/homeView.dart';
 import 'package:devseek/views/installView.dart';
 import 'package:devseek/views/tabDeciderView.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: TabDeciderView(),
+      home: EditProfileView(),
     );
   }
 }
