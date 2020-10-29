@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:devseek/constants.dart';
 import 'package:flutter/material.dart';
 

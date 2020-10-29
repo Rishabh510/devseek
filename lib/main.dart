@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: EditProfileView(),
+      home: TabDeciderView(),
     );
   }
 }
