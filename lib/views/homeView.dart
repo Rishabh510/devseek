@@ -13,11 +13,13 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   static const url = 'https://api.quotable.io/random';
+  bool quoteLoaded = false;
 
-  Future<void> getRandomQuote() async {
+  Future<String> getRandomQuote() async {
     final response = await http.get(url);
-    print(response.body);
-    // return jsonDecode(response.body);
+    String quote = jsonDecode(response.body)['content'];
+    print(quote);
+    return quote;
   }
 
   @override
@@ -35,22 +37,41 @@ class _HomeViewState extends State<HomeView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            OutlineButton(
-              onPressed: () {
-                getRandomQuote();
+            FutureBuilder(
+              future: (quoteLoaded) ? getRandomQuote() : null,
+              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                if (snapshot.hasData) {
+                  return Card(
+                    color: Colors.yellow,
+                    child: Padding(
+                      padding: EdgeInsets.all(0.04.wp),
+                      child: Text(
+                        '"' + snapshot.data + '"',
+                        style: TextStyle(fontSize: 40.sp),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  );
+                }
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      quoteLoaded = true;
+                    });
+                  },
+                  child: Card(
+                    color: Colors.yellow,
+                    child: Padding(
+                      padding: EdgeInsets.all(0.04.wp),
+                      child: Text(
+                        'Fetch a quote!',
+                        style: TextStyle(fontSize: 40.sp),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                );
               },
-              child: Text('Test'),
-            ),
-            Card(
-              color: Colors.yellow,
-              child: Padding(
-                padding: EdgeInsets.all(0.04.wp),
-                child: Text(
-                  'Get your daily quote',
-                  style: TextStyle(fontSize: 40.sp),
-                  textAlign: TextAlign.center,
-                ),
-              ),
             ),
             buildPost(),
             buildPost(),
