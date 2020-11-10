@@ -1,9 +1,7 @@
-import 'dart:convert';
-
+import 'package:devseek/services/quote.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:http/http.dart' as http;
 import '../constants.dart';
 
 class HomeView extends StatefulWidget {
@@ -12,16 +10,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  static const url = 'https://api.quotable.io/random';
   bool quoteLoaded = false;
-
-  Future<String> getRandomQuote() async {
-    final response = await http.get(url);
-    String quote = jsonDecode(response.body)['content'];
-    print(quote);
-    return quote;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
                     child: Padding(
                       padding: EdgeInsets.all(0.04.wp),
                       child: Text(
-                        '"' + snapshot.data + '"',
+                        '" ' + snapshot.data + ' "',
                         style: TextStyle(fontSize: 40.sp),
                         textAlign: TextAlign.center,
                       ),

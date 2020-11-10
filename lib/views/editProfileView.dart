@@ -8,8 +8,12 @@ class EditProfileView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: () {}),
-        title: Text('Edit Profile'),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        title: Hero(tag: 'edit_profile', child: Text('Edit Profile')),
         actions: [
           IconButton(icon: Icon(Icons.check), onPressed: () {}),
         ],
@@ -20,12 +24,15 @@ class EditProfileView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: blue,
+              Hero(
+                tag: 'profile_pic',
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: blue,
+                  ),
+                  height: 0.4.wp,
                 ),
-                height: 0.4.wp,
               ),
               SizedBox(height: 50.h),
               Text(

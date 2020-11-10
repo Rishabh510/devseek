@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:devseek/constants.dart';
+import 'package:devseek/views/editProfileView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -39,11 +40,14 @@ class _ProfileViewState extends State<ProfileView> {
                 children: [
                   Expanded(
                     flex: 1,
-                    child: Container(
-                      height: 0.2.hp,
-                      decoration: BoxDecoration(
-                        color: blue,
-                        shape: BoxShape.circle,
+                    child: Hero(
+                      tag: 'profile_pic',
+                      child: Container(
+                        height: 0.2.hp,
+                        decoration: BoxDecoration(
+                          color: blue,
+                          shape: BoxShape.circle,
+                        ),
                       ),
                     ),
                   ),
@@ -106,10 +110,15 @@ class _ProfileViewState extends State<ProfileView> {
                           ],
                         ),
                         OutlineButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Edit Profile',
-                            style: TextStyle(fontSize: 36.sp),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfileView()));
+                          },
+                          child: Hero(
+                            tag: 'edit_profile',
+                            child: Text(
+                              'Edit Profile',
+                              style: TextStyle(fontSize: 36.sp),
+                            ),
                           ),
                         ),
                       ],
