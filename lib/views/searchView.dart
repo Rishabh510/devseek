@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchView extends StatefulWidget {
   @override
@@ -58,11 +59,17 @@ class _SearchViewState extends State<SearchView> {
   Container buildListTile() {
     return Container(
       color: Colors.green[200],
-      margin: EdgeInsets.all(8),
+      margin: EdgeInsets.all(16.w),
       child: ListTile(
         leading: CircleAvatar(),
-        title: Text('User Name'),
-        subtitle: Text('user id'),
+        title: Text(
+          'User Name',
+          style: TextStyle(fontSize: 40.sp),
+        ),
+        subtitle: Text(
+          'user id',
+          style: TextStyle(fontSize: 40.sp),
+        ),
       ),
     );
   }

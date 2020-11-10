@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:devseek/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileView extends StatefulWidget {
   @override
@@ -33,13 +34,13 @@ class _ProfileViewState extends State<ProfileView> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(32.w),
               child: Row(
                 children: [
                   Expanded(
                     flex: 1,
                     child: Container(
-                      height: 100,
+                      height: 0.2.hp,
                       decoration: BoxDecoration(
                         color: blue,
                         shape: BoxShape.circle,
@@ -47,7 +48,7 @@ class _ProfileViewState extends State<ProfileView> {
                     ),
                   ),
                   SizedBox(
-                    width: 24,
+                    width: 0.05.wp,
                   ),
                   Expanded(
                     flex: 2,
@@ -58,38 +59,47 @@ class _ProfileViewState extends State<ProfileView> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(16.w),
                               child: Column(
                                 children: [
                                   Text(
                                     '2',
-                                    style: TextStyle(fontSize: 24),
+                                    style: TextStyle(fontSize: 72.sp),
                                   ),
-                                  Text('Posts'),
+                                  Text(
+                                    'Posts',
+                                    style: TextStyle(fontSize: 36.sp),
+                                  ),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(16.w),
                               child: Column(
                                 children: [
                                   Text(
                                     '2',
-                                    style: TextStyle(fontSize: 24),
+                                    style: TextStyle(fontSize: 72.sp),
                                   ),
-                                  Text('Followers'),
+                                  Text(
+                                    'Followers',
+                                    style: TextStyle(fontSize: 36.sp),
+                                  ),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(16.w),
                               child: Column(
                                 children: [
                                   Text(
                                     '2',
-                                    style: TextStyle(fontSize: 24),
+                                    style: TextStyle(fontSize: 72.sp),
                                   ),
-                                  Text('Following'),
+                                  Text(
+                                    'Following',
+                                    style: TextStyle(fontSize: 36.sp),
+                                  ),
                                 ],
                               ),
                             ),
@@ -97,7 +107,10 @@ class _ProfileViewState extends State<ProfileView> {
                         ),
                         OutlineButton(
                           onPressed: () {},
-                          child: Text('Edit Profile'),
+                          child: Text(
+                            'Edit Profile',
+                            style: TextStyle(fontSize: 36.sp),
+                          ),
                         ),
                       ],
                     ),
@@ -106,20 +119,23 @@ class _ProfileViewState extends State<ProfileView> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(32.w),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('DevSeek ID'),
+                    Text(
+                      'DevSeek ID',
+                      style: TextStyle(fontSize: 50.sp),
+                    ),
                     Text(
                       'DevSeek User Name',
-                      style: TextStyle(fontSize: 24),
+                      style: TextStyle(fontSize: 72.sp),
                     ),
                     Text(
                       'DevSeek Bio',
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 60.sp),
                     ),
                   ],
                 ),
@@ -183,9 +199,9 @@ class _ProfileViewState extends State<ProfileView> {
         itemCount: posts.length,
         itemBuilder: (context, i) {
           return Container(
-            padding: EdgeInsets.all(4),
+            padding: EdgeInsets.all(8.w),
             width: double.infinity,
-            height: 250,
+            height: 0.5.hp,
             child: posts[i],
           );
         },

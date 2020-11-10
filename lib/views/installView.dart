@@ -1,6 +1,7 @@
 import 'package:devseek/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InstallView extends StatelessWidget {
   @override
@@ -18,18 +19,21 @@ class InstallView extends StatelessWidget {
                 Text(
                   'For the developers who seek',
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 60.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
             ),
             RaisedButton(
-              color: blue.withOpacity(0.5),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
-              padding: EdgeInsets.symmetric(horizontal: 64, vertical: 16),
+              color: blue.withOpacity(0.7),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(60.w)),
+              padding: EdgeInsets.symmetric(horizontal: 200.w, vertical: 50.h),
               onPressed: () {},
-              child: Text('Login'),
+              child: Text(
+                'Login',
+                style: TextStyle(fontSize: 60.sp),
+              ),
             ),
           ],
         ),

@@ -3,10 +3,12 @@ import 'package:devseek/views/homeView.dart';
 import 'package:devseek/views/installView.dart';
 import 'package:devseek/views/tabDeciderView.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'constants.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  ScreenUtil.init();
   runApp(MyApp());
 }
 

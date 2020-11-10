@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PostView extends StatelessWidget {
   @override
@@ -13,13 +14,13 @@ class PostView extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.all(16),
+          margin: EdgeInsets.all(32.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                height: 250,
-                padding: EdgeInsets.all(16),
+                height: 0.4.hp,
+                padding: EdgeInsets.all(32.w),
                 decoration: BoxDecoration(
                   border: Border.all(),
                 ),
@@ -28,13 +29,16 @@ class PostView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(icon: Icon(Icons.add), onPressed: () {}),
-                      Text('Upload a photo'),
+                      Text(
+                        'Upload a photo',
+                        style: TextStyle(fontSize: 50.sp),
+                      ),
                     ],
                   ),
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 40.h,
               ),
               TextField(
                 decoration: InputDecoration(

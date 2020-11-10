@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NotificationsView extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class NotificationsView extends StatelessWidget {
       ),
       body: ListView(
         shrinkWrap: true,
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.all(16.w),
         children: [
           Container(
             decoration: BoxDecoration(
@@ -22,7 +23,10 @@ class NotificationsView extends StatelessWidget {
             ),
             child: ListTile(
               leading: CircleAvatar(),
-              title: Text('bla bal abla has started following you'),
+              title: Text(
+                'bla bal abla has started following you',
+                style: TextStyle(fontSize: 40.sp),
+              ),
             ),
           ),
         ],

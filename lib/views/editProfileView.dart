@@ -1,5 +1,6 @@
 import 'package:devseek/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProfileView extends StatelessWidget {
   @override
@@ -15,7 +16,7 @@ class EditProfileView extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(32.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -24,20 +25,26 @@ class EditProfileView extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: blue,
                 ),
-                height: 140,
+                height: 0.4.wp,
               ),
-              SizedBox(height: 20),
-              Text('Profile Name'),
-              SizedBox(height: 10),
+              SizedBox(height: 50.h),
+              Text(
+                'Profile Name',
+                style: TextStyle(fontSize: 50.sp),
+              ),
+              SizedBox(height: 20.h),
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Enter new profile name',
                 ),
               ),
-              SizedBox(height: 20),
-              Text('About'),
-              SizedBox(height: 10),
+              SizedBox(height: 40.h),
+              Text(
+                'About',
+                style: TextStyle(fontSize: 50.sp),
+              ),
+              SizedBox(height: 20.h),
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
