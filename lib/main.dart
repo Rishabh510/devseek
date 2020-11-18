@@ -1,3 +1,4 @@
+import 'package:devseek/views/createAccountView.dart';
 import 'package:devseek/views/editProfileView.dart';
 import 'package:devseek/views/homeView.dart';
 import 'package:devseek/views/installView.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: TabDeciderView(),
+      home: CreateAccountView(),
     );
   }
 }
