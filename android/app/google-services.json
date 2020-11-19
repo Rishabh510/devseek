@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1080442918837",
+    "firebase_url": "https://devseek-dd575.firebaseio.com",
+    "project_id": "devseek-dd575",
+    "storage_bucket": "devseek-dd575.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080442918837:android:fa1c1f0a7b10b6f0e46bfc",
+        "android_client_info": {
+          "package_name": "com.rishabh.devseek"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080442918837-ahjthq9n8lkujp3o0eb0tmc63ae46j5o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rishabh.devseek",
+            "certificate_hash": "a9feeaa3e7bcc83fc8f2e87e2e64242dd030d5cf"
+          }
+        },
+        {
+          "client_id": "1080442918837-nf3a6k5vle34g6d11habcrj40odc2r00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR9WOf4GsmsfG5WJHcbaSLkIUWLSxO2qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080442918837-nf3a6k5vle34g6d11habcrj40odc2r00.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

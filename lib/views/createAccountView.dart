@@ -9,10 +9,12 @@ class CreateAccountView extends StatefulWidget {
 
 class _CreateAccountViewState extends State<CreateAccountView> {
   final _formKey = GlobalKey<FormState>();
+  String _username, _bio;
 
   void saveAccount() {
     if (_formKey.currentState.validate()) {
-      print('Success');
+      _formKey.currentState.save();
+      Navigator.pop(context, [_username, _bio]);
     }
   }
 
@@ -47,6 +49,11 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                     }
                     return null;
                   },
+                  onSaved: (val) {
+                    setState(() {
+                      _username = val;
+                    });
+                  },
                 ),
                 SizedBox(height: 40.h),
                 Text(
@@ -65,6 +72,11 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                       return "Please do not leave this field empty";
                     }
                     return null;
+                  },
+                  onSaved: (val) {
+                    setState(() {
+                      _bio = val;
+                    });
                   },
                 ),
                 SizedBox(height: 40.h),
