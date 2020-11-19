@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData)
-            return HomeView();
+            return TabDeciderView();
           else if (snapshot.connectionState == ConnectionState.waiting)
             Center(
               child: CircularProgressIndicator(),

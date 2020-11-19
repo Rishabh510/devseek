@@ -60,25 +60,27 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                   );
-                }
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      quoteLoaded = true;
-                    });
-                  },
-                  child: Card(
-                    color: Colors.yellow,
-                    child: Padding(
-                      padding: EdgeInsets.all(0.04.wp),
-                      child: Text(
-                        'Fetch a quote!',
-                        style: TextStyle(fontSize: 40.sp),
-                        textAlign: TextAlign.center,
+                } else if (snapshot.connectionState == ConnectionState.waiting)
+                  return Center(child: CircularProgressIndicator());
+                else
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        quoteLoaded = true;
+                      });
+                    },
+                    child: Card(
+                      color: Colors.yellow,
+                      child: Padding(
+                        padding: EdgeInsets.all(0.04.wp),
+                        child: Text(
+                          'Fetch a quote!',
+                          style: TextStyle(fontSize: 40.sp),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
-                  ),
-                );
+                  );
               },
             ),
             buildPost(),
