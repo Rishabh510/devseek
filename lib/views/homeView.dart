@@ -1,7 +1,9 @@
 import 'package:devseek/services/quote.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../constants.dart';
 
 class HomeView extends StatefulWidget {
@@ -11,6 +13,12 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   bool quoteLoaded = false;
+
+  Future<void> logout() async {
+    await FirebaseAuth.instance.signOut();
+    await GoogleSignIn().signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +29,17 @@ class _HomeViewState extends State<HomeView> {
           'DevSeek',
           style: TextStyle(color: blue, fontSize: 60.sp),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              logout();
+            },
+            icon: Icon(
+              Icons.logout,
+              color: Colors.black,
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

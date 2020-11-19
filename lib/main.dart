@@ -3,7 +3,9 @@ import 'package:devseek/views/editProfileView.dart';
 import 'package:devseek/views/homeView.dart';
 import 'package:devseek/views/installView.dart';
 import 'package:devseek/views/tabDeciderView.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'constants.dart';
@@ -25,7 +27,19 @@ class MyApp extends StatelessWidget {
         primarySwatch: blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: InstallView(),
+      // home: InstallView(),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData)
+            return HomeView();
+          else if (snapshot.connectionState == ConnectionState.waiting)
+            Center(
+              child: CircularProgressIndicator(),
+            );
+          return InstallView();
+        },
+      ),
     );
   }
 }
