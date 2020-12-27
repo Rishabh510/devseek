@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       title: 'DevSeek',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: blue,
+        primaryColor: blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // home: InstallView(),
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           if (snapshot.hasData)
             return TabDeciderView();
           else if (snapshot.connectionState == ConnectionState.waiting)
-            Center(
+            return Center(
               child: CircularProgressIndicator(),
             );
           return InstallView();
