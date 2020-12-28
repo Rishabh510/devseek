@@ -3,22 +3,36 @@ import 'package:devseek/views/notificationsView.dart';
 import 'package:devseek/views/postView.dart';
 import 'package:devseek/views/profileView.dart';
 import 'package:devseek/views/searchView.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class TabDeciderView extends StatefulWidget {
+  final User currentUser;
+
+  const TabDeciderView({Key key, this.currentUser}) : super(key: key);
+
   @override
   _TabDeciderViewState createState() => _TabDeciderViewState();
 }
 
 class _TabDeciderViewState extends State<TabDeciderView> {
   int currIndex = 0;
-  List<Widget> screens = [
-    HomeView(),
-    SearchView(),
-    PostView(),
-    NotificationsView(),
-    ProfileView(),
-  ];
+  User myUser;
+  List<Widget> screens;
+
+  @override
+  void initState() {
+    screens = [
+      HomeView(),
+      SearchView(
+        currentUser: widget.currentUser,
+      ),
+      PostView(),
+      NotificationsView(),
+      ProfileView(),
+    ];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
