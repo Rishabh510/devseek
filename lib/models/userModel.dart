@@ -10,7 +10,7 @@ class UserModel {
 
   UserModel(this.id, this.username, this.profilename, this.bio, this.url, this.email);
 
-  factory UserModel.fromDocument(QueryDocumentSnapshot docsnap) {
+  factory UserModel.fromDocument(DocumentSnapshot docsnap) {
     return UserModel(
       docsnap.data()['id'],
       docsnap.data()['username'],

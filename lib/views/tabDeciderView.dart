@@ -29,7 +29,7 @@ class _TabDeciderViewState extends State<TabDeciderView> {
       ),
       PostView(),
       NotificationsView(),
-      ProfileView(),
+      ProfileView(currentUser: widget.currentUser),
     ];
     super.initState();
   }

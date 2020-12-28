@@ -1,8 +1,39 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:devseek/constants.dart';
+import 'package:devseek/models/userModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class EditProfileView extends StatelessWidget {
+class EditProfileView extends StatefulWidget {
+  final UserModel myProfile;
+  final String docId;
+  const EditProfileView({Key key, this.myProfile, this.docId}) : super(key: key);
+  @override
+  _EditProfileViewState createState() => _EditProfileViewState();
+}
+
+class _EditProfileViewState extends State<EditProfileView> {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  CollectionReference colRef;
+  TextEditingController _profileNameController;
+  TextEditingController _bioController;
+
+  @override
+  void initState() {
+    colRef = firestore.collection('users');
+    _profileNameController = TextEditingController(text: widget.myProfile.profilename);
+    _bioController = TextEditingController(text: widget.myProfile.bio);
+    super.initState();
+  }
+
+  Future<void> saveDetails() async {
+    await colRef.doc(widget.docId).update({
+      'profilename': _profileNameController.text,
+      'bio': _bioController.text,
+    });
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +46,11 @@ class EditProfileView extends StatelessWidget {
             }),
         title: Hero(tag: 'edit_profile', child: Text('Edit Profile')),
         actions: [
-          IconButton(icon: Icon(Icons.check), onPressed: () {}),
+          IconButton(
+              icon: Icon(Icons.check),
+              onPressed: () {
+                saveDetails();
+              }),
         ],
       ),
       body: SingleChildScrollView(
@@ -27,6 +62,7 @@ class EditProfileView extends StatelessWidget {
               Hero(
                 tag: 'profile_pic',
                 child: Container(
+                  child: Image.network(widget.myProfile.url),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: blue,
@@ -41,6 +77,7 @@ class EditProfileView extends StatelessWidget {
               ),
               SizedBox(height: 20.h),
               TextField(
+                controller: _profileNameController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Enter new profile name',
@@ -53,6 +90,7 @@ class EditProfileView extends StatelessWidget {
               ),
               SizedBox(height: 20.h),
               TextField(
+                controller: _bioController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Enter new description',
