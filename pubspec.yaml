@@ -13,6 +13,10 @@ dependencies:
   cupertino_icons: ^1.0.0
   flutter_screenutil: 3.0.0-beta.1
   http: ^0.12.2
+  image_picker: ^0.6.7+17
+  path_provider: ^1.6.24
+  geolocator: ^6.1.13
+  geocoding: ^1.0.5
 
   #firebase
   firebase_core: ^0.5.3
