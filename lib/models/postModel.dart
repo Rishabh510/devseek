@@ -8,7 +8,7 @@ class PostModel {
   final String description;
   final String location;
   final String url;
-  List<String> likes;
+  List<dynamic> likes;
 
   PostModel(this.postId, this.ownerId, this.ownerPhotoUrl, this.username, this.description, this.location, this.url, this.likes);
 
