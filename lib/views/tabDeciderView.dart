@@ -27,7 +27,9 @@ class _TabDeciderViewState extends State<TabDeciderView> {
       SearchView(
         currentUser: widget.currentUser,
       ),
-      PostView(),
+      PostView(
+        currentUser: widget.currentUser,
+      ),
       NotificationsView(),
       ProfileView(currentUser: widget.currentUser),
     ];
