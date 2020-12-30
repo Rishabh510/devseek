@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geocoding/geocoding.dart';
@@ -16,6 +19,8 @@ class _PostViewState extends State<PostView> {
   File file;
   TextEditingController _descriptionController = TextEditingController();
   TextEditingController _locationController = TextEditingController();
+  final _firebaseStorage = FirebaseStorage.instance;
+  final _firestore = FirebaseFirestore.instance;
 
   Future<void> pickImage(bool isCamera) async {
     PickedFile imageFile = await imagePicker.getImage(source: (isCamera) ? ImageSource.camera : ImageSource.gallery);
@@ -36,6 +41,14 @@ class _PostViewState extends State<PostView> {
     _locationController.text = loc;
   }
 
+  Future<void> uploadToFirebaseStorage() async {
+    Reference postRef = _firebaseStorage.ref().child('posts');
+    String postId = DateTime.now().toIso8601String();
+    TaskSnapshot task = await postRef.child("$postId.jpg").putFile(file);
+    String url = await task.ref.getDownloadURL();
+    print(url);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +56,13 @@ class _PostViewState extends State<PostView> {
         centerTitle: true,
         title: Text('New Post'),
         actions: [
-          IconButton(icon: Icon(Icons.send), onPressed: () {}),
+          IconButton(
+              icon: Icon(Icons.send),
+              onPressed: (file == null)
+                  ? null
+                  : () {
+                      uploadToFirebaseStorage();
+                    }),
         ],
       ),
       body: SingleChildScrollView(
