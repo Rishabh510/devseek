@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:devseek/constants.dart';
+import 'package:devseek/models/postModel.dart';
 import 'package:devseek/models/userModel.dart';
 import 'package:devseek/views/editProfileView.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,17 +23,7 @@ class _ProfileViewState extends State<ProfileView> {
   CollectionReference colRef;
   UserModel myProfile;
 
-  List<Widget> posts = [
-    Container(
-      color: Colors.yellow,
-    ),
-    Container(
-      color: Colors.red,
-    ),
-    Container(
-      color: Colors.green,
-    ),
-  ];
+  List<String> posts = [];
 
   @override
   void initState() {
@@ -188,6 +179,7 @@ class _ProfileViewState extends State<ProfileView> {
                         onPressed: () {
                           setState(() {
                             grid = true;
+                            posts = [];
                           });
                         },
                       ),
@@ -196,13 +188,20 @@ class _ProfileViewState extends State<ProfileView> {
                         onPressed: () {
                           setState(() {
                             grid = false;
+                            posts = [];
                           });
                         },
                       ),
                     ],
                   ),
                   Divider(color: Colors.black, thickness: 0.5),
-                  (grid) ? createGridView() : createListView(),
+                  FutureBuilder(
+                    future: getPosts(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
+                      return (grid) ? createGridView(snapshot.data) : createListView(snapshot.data);
+                    },
+                  ),
                 ],
               ),
             );
@@ -210,7 +209,17 @@ class _ProfileViewState extends State<ProfileView> {
     );
   }
 
-  createGridView() {
+  Future<List<String>> getPosts() async {
+    posts = [];
+    CollectionReference postRef = firestore.collection('posts');
+    QuerySnapshot snap = await postRef.where('ownerId', isEqualTo: docId).get();
+    snap.docs.forEach((element) {
+      posts.add(PostModel.fromDocument(element).url);
+    });
+    return posts;
+  }
+
+  createGridView(List<String> posts) {
     return Container(
       child: GridView.builder(
         physics: NeverScrollableScrollPhysics(),
@@ -218,7 +227,7 @@ class _ProfileViewState extends State<ProfileView> {
         itemCount: posts.length,
         itemBuilder: (context, i) {
           return Container(
-            child: posts[i],
+            child: Image.network(posts[i]),
           );
         },
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -231,7 +240,7 @@ class _ProfileViewState extends State<ProfileView> {
     );
   }
 
-  createListView() {
+  createListView(List<String> posts) {
     return Container(
       child: ListView.builder(
         physics: NeverScrollableScrollPhysics(),
@@ -242,7 +251,7 @@ class _ProfileViewState extends State<ProfileView> {
             padding: EdgeInsets.all(8.w),
             width: double.infinity,
             height: 0.5.hp,
-            child: posts[i],
+            child: Image.network(posts[i]),
           );
         },
       ),

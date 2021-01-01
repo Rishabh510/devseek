@@ -54,7 +54,7 @@ class _TabDeciderViewState extends State<TabDeciderView> {
           buildBottomNavigationBarItem(Icons.home, 'Home'),
           buildBottomNavigationBarItem(Icons.search, 'Search'),
           buildBottomNavigationBarItem(Icons.add_circle_outline, 'New'),
-          buildBottomNavigationBarItem(Icons.favorite, 'Notif'),
+          buildBottomNavigationBarItem(Icons.favorite, 'Activity'),
           buildBottomNavigationBarItem(Icons.account_circle, 'Profile'),
         ],
       ),
