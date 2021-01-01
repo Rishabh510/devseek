@@ -23,7 +23,9 @@ class _TabDeciderViewState extends State<TabDeciderView> {
   @override
   void initState() {
     screens = [
-      HomeView(),
+      HomeView(
+        currentUser: widget.currentUser,
+      ),
       SearchView(
         currentUser: widget.currentUser,
       ),
