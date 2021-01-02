@@ -20,6 +20,8 @@ class _TabDeciderViewState extends State<TabDeciderView> {
   User myUser;
   List<Widget> screens;
 
+  void fun() {}
+
   @override
   void initState() {
     screens = [
